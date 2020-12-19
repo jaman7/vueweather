@@ -31,7 +31,7 @@ const routes = [
 
 const router = new VueRouter({
 	mode: 'history',
-	base: '/vueweather2/src',
+	base: '/vueweatherGithub/src',
 	routes
 });
 

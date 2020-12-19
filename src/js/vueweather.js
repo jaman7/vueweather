@@ -3286,6 +3286,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dropdown__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dropdown */ "./src/vue/components/dashboard/dropdown.vue");
 /* harmony import */ var _view_IconWeater__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../view/IconWeater */ "./src/vue/components/view/IconWeater.vue");
 /* harmony import */ var _view_WindDir__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../view/WindDir */ "./src/vue/components/view/WindDir.vue");
+/* harmony import */ var _view_progressBar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../view/progressBar */ "./src/vue/components/view/progressBar.vue");
 //
 //
 //
@@ -3356,6 +3357,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -3364,7 +3378,13 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     Dropdown: _dropdown__WEBPACK_IMPORTED_MODULE_0__.default,
     IconWeater: _view_IconWeater__WEBPACK_IMPORTED_MODULE_1__.default,
+    ProgressBar: _view_progressBar__WEBPACK_IMPORTED_MODULE_3__.default,
     WindDir: _view_WindDir__WEBPACK_IMPORTED_MODULE_2__.default
+  },
+  data: function data() {
+    return {
+      progressclassvertical: 'progress-bar-vertical'
+    };
   },
   computed: {
     auth: function auth() {
@@ -3386,6 +3406,9 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     onLogout: function onLogout() {
       this.$store.dispatch('logout');
+    },
+    timeOfDay: function timeOfDay(utc) {
+      return new Date(utc * 1000).toLocaleTimeString().slice(0, 5);
     }
   }
 });
@@ -3466,6 +3489,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -3627,17 +3653,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'ProgressBar',
   props: {
-    tday: Number
+    tday: Number,
+    styleclass: String
   },
   data: function data() {
     return {
       datatemp: this.toPositive(this.tday),
-      stylewidth: "width: ".concat(this.toPositive(this.tday), "%"),
-      classprogress: this.negative(this.tday) ? 'blue' : 'red'
+      style: this.styleclass ? "height: ".concat(this.toPositive(this.tday), "%") : "width: ".concat(this.toPositive(this.tday), "%"),
+      classprogress: this.negative(this.tday) ? 'blue' : 'red',
+      addclass: this.styleclass || null
     };
   },
   methods: {
     negative: function negative(number) {
+      console.log(!Object.is(Math.abs(number), +number));
       return !Object.is(Math.abs(number), +number);
     },
     toPositive: function toPositive(number) {
@@ -3770,7 +3799,7 @@ var routes = [{
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_6__.default({
   mode: 'history',
-  base: '/vueweather2/src',
+  base: '/vueweatherGithub/src',
   routes: routes
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);
@@ -7272,7 +7301,7 @@ var render = function() {
               "div",
               { key: "daily-" + index, staticClass: "item-row" },
               [
-                _c("div", { staticClass: "item miditem" }, [
+                _c("div", { staticClass: "item smallitem" }, [
                   _c("span", [_vm._v(_vm._s(_vm.dayOfWeek(item.dt)))])
                 ]),
                 _vm._v(" "),
@@ -7713,12 +7742,45 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "col-12" },
-      [_c("temp-var-chart", { attrs: { tempVar: _vm.getHourlyWeather } })],
-      1
-    )
+    _c("div", { staticClass: "col-12" }, [
+      _c("h2", { staticClass: "siedebar-title-state" }, [
+        _vm._v("hourly Weather temp")
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "hourly mt-2" },
+        _vm._l(_vm.getHourlyWeather.slice(0, 6), function(item, index) {
+          return _c(
+            "div",
+            { key: "hourly-" + index, staticClass: "item" },
+            [
+              _c("span", [_vm._v(_vm._s(item.main.temp) + "°C")]),
+              _vm._v(" "),
+              _c("ProgressBar", {
+                key: _vm.$uuid.v1(),
+                attrs: {
+                  tday: item.main.temp,
+                  styleclass: _vm.progressclassvertical
+                }
+              }),
+              _vm._v(" "),
+              _c("span", [
+                _vm._v(
+                  _vm._s(_vm.timeOfDay(item.dt)) +
+                    " " +
+                    _vm._s(item.dt_txt.slice(5, 7)) +
+                    "." +
+                    _vm._s(item.dt_txt.slice(8, 10))
+                )
+              ])
+            ],
+            1
+          )
+        }),
+        0
+      )
+    ])
   ])
 }
 var staticRenderFns = []
@@ -7830,7 +7892,12 @@ var render = function() {
           }),
           _vm._v(" "),
           _c("p", { staticClass: "mb-0" }, [
-            _vm._v(_vm._s(this.mileToKilometer(_vm.windSpeed)) + " km/h")
+            _vm._v(
+              "\n\t\t\t" +
+                _vm._s(this.mileToKilometer(_vm.windSpeed)) +
+                "\n\t\t\t"
+            ),
+            _c("span", [_vm._v("km/h")])
           ])
         ]
       )
@@ -7888,11 +7955,11 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "progress" }, [
+  return _c("div", { staticClass: "progress", class: _vm.addclass }, [
     _c("div", {
       staticClass: "progress-bar bg-info",
       class: _vm.classprogress,
-      style: _vm.stylewidth,
+      style: _vm.style,
       attrs: {
         role: "progressbar",
         "aria-valuenow": _vm.datatemp,

@@ -61,7 +61,19 @@
 			</div>
 		</div>
 		<div class="col-12">
-			<temp-var-chart :tempVar="getHourlyWeather"></temp-var-chart>
+			<h2 class="siedebar-title-state">hourly Weather temp</h2>
+			<div class="hourly mt-2">
+				<div
+					v-for="(item , index ) in getHourlyWeather.slice(0,6)"
+					:key="`hourly-${index}`"
+					class="item"
+				>
+					<span>{{ item.main.temp }}°C</span>
+					<ProgressBar :key="$uuid.v1()" :tday="item.main.temp" :styleclass="progressclassvertical" />
+
+					<span>{{ timeOfDay(item.dt)}} {{ item.dt_txt.slice(5, 7) }}.{{ item.dt_txt.slice(8, 10) }}</span>
+				</div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -72,13 +84,20 @@
 import Dropdown from './dropdown';
 import IconWeater from '../view/IconWeater';
 import WindDir from '../view/WindDir';
+import ProgressBar from '../view/progressBar';
 
 export default {
 	name: 'sideBar',
 	components: {
 		Dropdown,
 		IconWeater,
+		ProgressBar,
 		WindDir
+	},
+	data() {
+		return {
+			progressclassvertical: 'progress-bar-vertical'
+		};
 	},
 	computed: {
 		auth() {
@@ -101,6 +120,9 @@ export default {
 	methods: {
 		onLogout() {
 			this.$store.dispatch('logout');
+		},
+		timeOfDay(utc) {
+			return new Date(utc * 1000).toLocaleTimeString().slice(0, 5);
 		}
 	}
 };

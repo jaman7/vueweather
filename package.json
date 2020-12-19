@@ -7,7 +7,7 @@
 	"repository": {
 		"type": "git",
 		"url": "",
-		"directory": "vueweather2"
+		"directory": "vueweatherGithub"
 	},
 	"engines": {
 		"node": ">=8.0.0",
@@ -186,17 +186,13 @@
 		"bourbon": "^7.0.0",
 		"bourbon-neat": "^4.0.0",
 		"crypto": "^1.0.1",
-		"fusioncharts": "^3.16.0",
 		"hash-it": "^4.0.5",
 		"moment-timezone": "^0.5.32",
 		"vee-validate": "^3.4.5",
 		"vue": "^2.6.12",
 		"vue-cookies": "^1.7.4",
-		"vue-fragment": "^1.5.1",
-		"vue-fusioncharts": "^3.1.0",
 		"vue-router": "^3.0",
 		"vue-uuid": "^2.0.2",
-		"vuex": "^3.6.0",
-		"vuex-persistedstate": "^4.0.0-beta.1"
+		"vuex": "^3.6.0"
 	}
 }

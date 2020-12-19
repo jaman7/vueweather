@@ -8,7 +8,7 @@
 					:key="`daily-${index}`"
 					class="item-row"
 				>
-					<div class="item miditem">
+					<div class="item smallitem">
 						<span>{{ dayOfWeek(item.dt)}}</span>
 					</div>
 

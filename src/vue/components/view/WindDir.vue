@@ -7,7 +7,10 @@
 
 		<div class="speed d-flex flex-grow-1 align-items-center">
 			<img src="img/windspeed.svg" alt="windspeed" class="img-fluid mr-1" />
-			<p class="mb-0">{{ this.mileToKilometer(windSpeed) }} km/h</p>
+			<p class="mb-0">
+				{{ this.mileToKilometer(windSpeed) }}
+				<span>km/h</span>
+			</p>
 		</div>
 	</div>
 </template>

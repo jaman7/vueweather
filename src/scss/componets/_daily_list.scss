@@ -18,6 +18,10 @@
 		&.smallitem {
 			flex: 1;
 			justify-content: center;
+
+			&:first-child {
+				justify-content: flex-start;
+			}
 		}
 
 		&-row {
@@ -29,6 +33,17 @@
 
 		& .icon {
 			font-size: 3rem;
+		}
+	}
+
+	& .direction,
+	& .speed {
+		flex: 1;
+		justify-content: flex-start;
+		padding: 0;
+
+		img {
+			max-height: 1.2em;
 		}
 	}
 

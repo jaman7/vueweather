@@ -1,10 +1,10 @@
 <template>
-	<div class="progress">
+	<div class="progress" :class="addclass">
 		<div
 			class="progress-bar bg-info"
 			:class="classprogress"
 			role="progressbar"
-			:style="stylewidth"
+			:style="style"
 			:aria-valuenow="datatemp"
 			aria-valuemin="0"
 			aria-valuemax="100"
@@ -16,17 +16,20 @@
 export default {
 	name: 'ProgressBar',
 	props: {
-		tday: Number
+		tday: Number,
+		styleclass: String
 	},
 	data() {
 		return {
 			datatemp: this.toPositive(this.tday),
-			stylewidth: `width: ${this.toPositive(this.tday)}%`,
-			classprogress: this.negative(this.tday) ? 'blue' : 'red'
+			style: this.styleclass ? `height: ${this.toPositive(this.tday)}%` : `width: ${this.toPositive(this.tday)}%`,
+			classprogress: this.negative(this.tday) ? 'blue' : 'red',
+			addclass: this.styleclass || null
 		};
 	},
 	methods: {
 		negative(number) {
+			console.log(!Object.is(Math.abs(number), +number));
 			return !Object.is(Math.abs(number), +number);
 		},
 		toPositive(number) {
