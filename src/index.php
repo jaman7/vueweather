@@ -12,6 +12,7 @@
 
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap&subset=latin-ext" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
+        <link href="favicon.ico" rel="shortcut icon">
     </head>
 
     <body>
