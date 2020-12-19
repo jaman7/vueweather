@@ -1,0 +1,46 @@
+%btn-auth {
+	@include padding(1rem 2rem);
+	background-color: $bg-content;
+	border-radius: 1rem;
+	text-decoration: none;
+	font-weight: 500;
+	transition: opacity 0.3s ease-in-out;
+	color: $colorFontNormal;
+
+	&:hover {
+		opacity: 0.7;
+	}
+}
+
+.auth {
+	& h1 {
+		@include padding(1rem);
+	}
+
+	& button {
+		@extend %btn-auth;
+		@include padding(0.2rem 1rem);
+		color: lighten($font-color, 30%);
+	}
+}
+
+.auth-item {
+	justify-content: space-around;
+
+	& a {
+		@extend %btn-auth;
+
+		&:first-child {
+			margin-right: 2em;
+		}
+	}
+}
+
+.signin-form {
+	& label {
+		color: lighten($font-color, 30%);
+	}
+	& .form-control {
+		border-radius: 1rem;
+	}
+}

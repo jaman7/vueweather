@@ -1,0 +1,35 @@
+// ***********************************
+// VARIABLES
+// ***********************************
+
+$bg-content: #f2fbff !default;
+$bg-sidebar: #100e3b !default;
+$font-color: #202b5c !default;
+$font-color-gray: #c4c3cc !default;
+$color-font-sidebar: #a0c5e8 !default;
+
+$color-red: rgb(255, 0, 0) !default;
+$color-blue: rgb(0, 0, 255) !default;
+
+$bg-black: #000 !default;
+$bg-white: #fff !default;
+$bg-body: #f2fbff !default;
+$bg-gray: #191c1e !default;
+$colorWhite: #fff !default;
+$colorFontNormal: #212529 !default;
+$colorGray: #ccc !default;
+
+$dark-bg: #222531 !default;
+
+$fontm: Montserrat, sans-serif !default;
+$fontbase: 16px !default;
+
+$container-max-widths: (
+	sm: 540px,
+	md: 720px,
+	lg: 960px,
+	xl: 1200px,
+) !default;
+
+//bootstrap active
+$component-active-bg: $colorGray !default;

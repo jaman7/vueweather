@@ -1,0 +1,14 @@
+.bg-content {
+	background-color: $bg-content;
+}
+
+.bg-sidebar {
+	background: $bg-sidebar;
+
+	@include mediaa(minmd) {
+		flex: 0 1 380px;
+		position: sticky;
+		z-index: 1000;
+		height: 100vh;
+	}
+}

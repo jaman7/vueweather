@@ -1,0 +1,13 @@
+.user-logo {
+	max-height: 44px;
+}
+
+.nav-users {
+	@include padding(0.5rem null);
+	align-items: center;
+
+	& .btn-secondary {
+		@extend %border-bg-transparernt;
+		border-radius: 0.5rem;
+	}
+}

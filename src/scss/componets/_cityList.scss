@@ -1,0 +1,62 @@
+$remove-icon-task-color: #bbb !default;
+$remove-icon-color-hover: #a52a2a !default;
+$checked-icon-color: #55ca38 !default;
+
+$border-color: #9a9fb2 !default;
+$bg-active: lighten($font-color, 80%) !default;
+.city-list {
+	list-style: none;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	@include padding(0.1rem);
+
+	& .item {
+		background-color: transparent;
+		@include padding(1rem);
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		text-align: center;
+		flex-wrap: wrap;
+		cursor: pointer;
+		border: 1px solid $border-color;
+		border-radius: 1rem;
+
+		&.active {
+			transform: scale(1.05);
+			background-color: $bg-active;
+		}
+
+		& .remove-item {
+			position: absolute;
+			top: 0.5rem;
+			right: 0.5rem;
+
+			cursor: pointer;
+			color: $remove-icon-task-color;
+
+			&:hover {
+				color: $remove-icon-color-hover;
+			}
+		}
+
+		& .checked {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			right: 0.5rem;
+			cursor: pointer;
+			color: $checked-icon-color;
+		}
+	}
+
+	& img {
+		max-height: 50px;
+	}
+
+	& span {
+		color: $font-color;
+		@include padding(0.5rem 0.5rem null 0.5rem);
+	}
+}

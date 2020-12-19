@@ -1,0 +1,32 @@
+.findcity {
+	& .saarch-col {
+		@include padding(18px null);
+	}
+
+	& .autocomplete-input {
+		background-color: $bg-white;
+
+		&::placeholder {
+			color: $font-color-gray;
+		}
+	}
+
+	& .dropdown {
+		margin-left: 4rem;
+
+		& .btn-secondary {
+			border-radius: 0.5rem;
+			@extend %border-bg-transparernt;
+			color: $font-color;
+			font-weight: 500;
+			box-shadow: none;
+			outline: 0;
+
+			&:focus,
+			&:active {
+				box-shadow: none;
+				outline: 0;
+			}
+		}
+	}
+}

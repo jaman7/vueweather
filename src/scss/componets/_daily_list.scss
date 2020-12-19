@@ -1,0 +1,49 @@
+.daily-list {
+	display: flex;
+	align-items: flex-start;
+	flex-direction: column;
+	justify-content: flex-start;
+
+	& .item {
+		display: flex;
+		align-items: center;
+		@include padding(0.5rem);
+
+		&.bigitem {
+			flex: 0 0 30%;
+		}
+		&.miditem {
+			flex: 2;
+		}
+		&.smallitem {
+			flex: 1;
+			justify-content: center;
+		}
+
+		&-row {
+			display: flex;
+			flex: 1 1 auto;
+			flex-direction: row;
+			width: 100%;
+		}
+
+		& .icon {
+			font-size: 3rem;
+		}
+	}
+
+	.raindrop {
+		max-height: 2em;
+		margin-right: 1rem;
+	}
+
+	& .progress {
+		flex: 1;
+		height: 0.35rem;
+		background-color: rgba($color-font-sidebar, 0.15);
+
+		& .red {
+			background-color: $color-red !important;
+		}
+	}
+}
