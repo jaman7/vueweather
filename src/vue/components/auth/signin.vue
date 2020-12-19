@@ -3,20 +3,38 @@
 		<div class="row">
 			<div class="col-12">
 				<div class="d-flex justify-content-center vh-100 align-items-center flex-column">
-					<h1>Log in to the Weather Dashboard</h1>
+					<h4>Log in to the Weather Dashboard</h4>
 					<div class="signin-form">
-						<form @submit.prevent="onSubmit">
-							<div class="form-group">
-								<label for="email">Mail</label>
-								<input class="form-control" id="email" v-model="email" type="email" />
-							</div>
-							<div class="form-group">
-								<label for="password">Password</label>
-								<input class="form-control" id="password" v-model="password" type="password" />
-							</div>
-							<p v-if="error">{{ errorMsg }}</p>
+						<ValidationObserver ref="observer" tag="form" novalidate @submit.prevent="onSubmit">
+							<ValidationProvider rules="required|email" v-slot="props" mode="passive" name="Email">
+								<div class="form-group">
+									<label for="email">Mail</label>
+									<input
+										class="form-control"
+										id="email"
+										v-model="email"
+										type="email"
+										:class="{invalid: props.errors[0] ? err : null}"
+									/>
+									<span class="error">{{ props.errors[0] }}</span>
+								</div>
+							</ValidationProvider>
+							<ValidationProvider rules="required" v-slot="props" mode="passive" name="Password">
+								<div class="form-group">
+									<label for="password">Password</label>
+									<input
+										class="form-control"
+										id="password"
+										v-model="password"
+										type="password"
+										:class="{invalid: props.errors[0] ? err : null}"
+									/>
+									<span class="error">{{ props.errors[0] }}</span>
+								</div>
+							</ValidationProvider>
+							<p class="error" v-if="error">{{ errorMsg }}</p>
 							<button class="btn btn-primary main" type="submit">Submit</button>
-						</form>
+						</ValidationObserver>
 					</div>
 				</div>
 			</div>
@@ -25,9 +43,22 @@
 </template>
 
 <script>
+import { ValidationProvider, ValidationObserver, extend } from 'vee-validate';
+import { required, email } from 'vee-validate/dist/rules';
+
+extend('required', required);
+
+// Add the email rule
+extend('email', email);
+
 export default {
+	components: {
+		ValidationProvider,
+		ValidationObserver
+	},
 	data() {
 		return {
+			err: 'invalid',
 			email: '',
 			password: ''
 		};
@@ -41,13 +72,15 @@ export default {
 		}
 	},
 	methods: {
-		onSubmit() {
-			const formData = {
-				email: this.email,
-				password: this.password
-			};
-			// console.log(formData)
-			this.$store.dispatch('login', { email: formData.email, password: formData.password });
+		async onSubmit() {
+			const isValid = await this.$refs.observer.validate();
+			if (isValid) {
+				const formData = {
+					email: this.email,
+					password: this.password
+				};
+				this.$store.dispatch('login', formData);
+			}
 		}
 	}
 };

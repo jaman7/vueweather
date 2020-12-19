@@ -1,5 +1,5 @@
 %btn-auth {
-	@include padding(1rem 2rem);
+	@include padding(0.5rem 2rem);
 	background-color: $bg-content;
 	border-radius: 1rem;
 	text-decoration: none;
@@ -13,7 +13,14 @@
 }
 
 .auth {
-	& h1 {
+	& form {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	& h4 {
+		color: lighten($font-color, 25%);
 		@include padding(1rem);
 	}
 
@@ -21,6 +28,11 @@
 		@extend %btn-auth;
 		@include padding(0.2rem 1rem);
 		color: lighten($font-color, 30%);
+	}
+
+	& .error {
+		color: $color-red;
+		@include padding(0.4rem null);
 	}
 }
 
@@ -38,9 +50,14 @@
 
 .signin-form {
 	& label {
-		color: lighten($font-color, 30%);
+		color: lighten($font-color, 25%);
 	}
 	& .form-control {
 		border-radius: 1rem;
+		margin-bottom: 0.5rem;
+
+		&.invalid {
+			border: 2px solid $color-red;
+		}
 	}
 }

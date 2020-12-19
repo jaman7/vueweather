@@ -179,6 +179,7 @@
 		"webpack-stream": "^6.1.0"
 	},
 	"dependencies": {
+		"@aacassandra/vue-disable-autocomplete": "^19.5.233",
 		"@trevoreyre/autocomplete-js": "^2.2.0",
 		"@trevoreyre/autocomplete-vue": "^2.2.0",
 		"axios": "^0.21.0",
@@ -193,6 +194,7 @@
 		"vue-cookies": "^1.7.4",
 		"vue-router": "^3.0",
 		"vue-uuid": "^2.0.2",
-		"vuex": "^3.6.0"
+		"vuex": "^3.6.0",
+		"yup": "^0.32.8"
 	}
 }

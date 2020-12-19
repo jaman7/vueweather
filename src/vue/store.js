@@ -14,7 +14,6 @@ const WEATHER_APIKEY = 'ae98d58d517252f2065829367d320dbb';
 const urloptions = `&APPID=${WEATHER_APIKEY}&units=metric`;
 
 Vue.use(Vuex);
-// Vue.prototype.$http = axios;
 
 export default new Vuex.Store({
 	state: {
@@ -254,11 +253,7 @@ export default new Vuex.Store({
 		},
 		async setFavCityActive({ commit }, payload) {
 			const { current, last } = payload;
-			// const city = {
-			// 	_id: current.name,
-			// 	index: current.country
-			// };
-			//  console.log(last);
+
 			commit('changeActiveCity', { last, current });
 
 			if (last._id !== '') {
