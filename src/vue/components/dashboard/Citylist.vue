@@ -11,13 +11,17 @@
 						v-for="(item, i ) in getCity"
 						:class="{ active: i === activeItem || item.active}"
 						class="item"
-						:key="`list-${item.id_city}`"
+						:key="`list-no-${i}`"
 						@click="searchSetCurrentCity(item, i)"
 					>
 						<img class="img-fluid" src="img/city.svg" :alt="item.name" />
 						<span>{{ item.name }}, {{ item.country }}</span>
-						<ButtonRemove :id="item._id" :key="$uuid.v4()" :cityid="item.id_city" />
-						<Checked v-if="i === activeItem || item.active" :key="$uuid.v4()" :cityid="item.id_city" />
+						<ButtonRemove :id="item._id" :key="`btn-no-${i}`" :cityid="item.id_city" />
+						<Checked
+							v-if="i === activeItem || item.active"
+							:key="`check-no-${i}`"
+							:cityid="item.id_city"
+						/>
 					</li>
 				</ul>
 				<p>left refresh: {{ timerclock }}</p>

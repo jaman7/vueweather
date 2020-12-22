@@ -11,8 +11,13 @@ export default {
 	data() {
 		return {
 			title: `IconWeater`,
-			icon: `icon wi wi-owm-${this.iconid}`
+			icon: `icon wi wi-owm-${this.string(this.iconid)}`
 		};
+	},
+	methods: {
+		string(item) {
+			return String(item);
+		}
 	}
 };
 </script>

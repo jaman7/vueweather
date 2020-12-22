@@ -2,71 +2,63 @@
 	<div class="row">
 		<div class="col-12">
 			<h2>Daily Weather</h2>
-			<div class="daily-list mt-5">
+			<div class="d-flex flex-column mt-5">
 				<div
-					v-for="(item , index ) in currentDailyWeather.slice(1,currentDailyWeather.length)"
-					:key="`daily-${index}`"
-					class="item-row"
+					v-for="(item , itemIndex ) in currentDailyWeather.slice(1,currentDailyWeather.length)"
+					:key="itemIndex"
+					class="daily-list"
+					@click="setActiveItemId(itemIndex)"
 				>
-					<div class="item smallitem">
-						<span>{{ dayOfWeek(item.dt)}}</span>
-					</div>
+					<DailyItems :item="item" :key="`items-${itemIndex}`" />
 
-					<div class="item smallitem">
-						<img class="img-fluid raindrop" src="img/raindrop.svg" alt="Raindrop" />
-						<span>{{ item.humidity }}%</span>
-					</div>
-
-					<div class="item smallitem">
-						<IconWeater :key="$uuid.v1()" :iconid="item.weather[0].id" />
-					</div>
-
-					<div class="item bigitem">
-						<ProgressBar :key="$uuid.v1()" :tday="Math.floor(item.temp.day * 1) / 1" />
-					</div>
-
-					<div class="item smallitem">
-						<span>{{ Math.floor(item.temp.day * 1) / 1 }}°C</span>
-					</div>
-
-					<div class="item miditem">
-						<WindDir :windSpeed="item.wind_speed" :windDir="item.wind_deg" />
+					<div class="item-active collapse show">
+						<CollapseTransition>
+							<div
+								v-show="activeItemId === itemIndex  && isActive"
+								class="bg-white"
+								:key="`daily-item-${itemIndex}`"
+							>
+								<DailyCollapse :item="item" :key="`collapse-${itemIndex}`" />
+							</div>
+						</CollapseTransition>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
-	<!-- <div>{{currentWeather}}</div> -->
 </template>
 
 <script>
-import IconWeater from '../view/IconWeater';
-import ProgressBar from '../view/progressBar';
-import WindDir from '../view/WindDir';
+import { CollapseTransition } from '@ivanv/vue-collapse-transition';
+
+import DailyItems from './DailyItems';
+import DailyCollapse from './DailyCollapse';
 
 export default {
 	name: 'Daily',
 	components: {
-		IconWeater,
-		ProgressBar,
-		WindDir
+		CollapseTransition,
+		DailyItems,
+		DailyCollapse
 	},
 	data() {
 		return {
-			red: 'red',
-			blue: 'blue'
+			activeItemId: ''
 		};
 	},
-	created() {},
-	mounted() {},
 	methods: {
-		dayOfWeek(utc) {
-			const time = new Date(utc * 1000);
-			return this.user.days[time.getDay()];
+		setActiveItemId(itemIndex) {
+			if (itemIndex === this.activeItemId) {
+				this.activeItemId = '';
+				return;
+			}
+			this.activeItemId = itemIndex;
 		}
 	},
 	computed: {
+		isActive() {
+			return this.activeItemId !== '';
+		},
 		user() {
 			return this.$store.getters.user;
 		},

@@ -179,22 +179,15 @@
 		"webpack-stream": "^6.1.0"
 	},
 	"dependencies": {
-		"@aacassandra/vue-disable-autocomplete": "^19.5.233",
-		"@trevoreyre/autocomplete-js": "^2.2.0",
+		"@ivanv/vue-collapse-transition": "^0.2.1",
 		"@trevoreyre/autocomplete-vue": "^2.2.0",
 		"axios": "^0.21.0",
-		"bootstrap-vue": "^2.20.1",
 		"bourbon": "^7.0.0",
 		"bourbon-neat": "^4.0.0",
-		"crypto": "^1.0.1",
 		"hash-it": "^4.0.5",
-		"moment-timezone": "^0.5.32",
 		"vee-validate": "^3.4.5",
 		"vue": "^2.6.12",
-		"vue-cookies": "^1.7.4",
 		"vue-router": "^3.0",
-		"vue-uuid": "^2.0.2",
-		"vuex": "^3.6.0",
-		"yup": "^0.32.8"
+		"vuex": "^3.6.0"
 	}
 }

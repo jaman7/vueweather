@@ -12,7 +12,7 @@
 export default {
 	name: 'ButtonRemove',
 	props: {
-		cityid: Number,
+		cityid: String,
 		id: String
 	},
 	data() {

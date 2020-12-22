@@ -19,7 +19,6 @@ const routes = [
 		path: '/dashboard',
 		component: DashboardPage,
 		beforeEnter(to, from, next) {
-			// console.log(store.state.idToken);
 			if (store.state.idToken) {
 				next();
 			} else {

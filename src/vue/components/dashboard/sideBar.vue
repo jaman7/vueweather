@@ -1,7 +1,7 @@
 <template>
 	<div class="row">
 		<ul class="nav w-100 nav-justified nav-users mt-4">
-			<Dropdown :key="$uuid.v4()" />
+			<Dropdown :key="`dropdown-sidebar`" />
 			<li class="nav-item dropdown">
 				<a
 					href="#"
@@ -23,7 +23,7 @@
 		<div class="col-12 box-title">
 			<div class="boxinfo-row">
 				<div class="boxinfo-col text-center">
-					<IconWeater :key="$uuid.v4()" :iconid="currentWeather.weather_id" />
+					<IconWeater :key="`icon-${currentWeather.weather_id}`" :iconid="currentWeather.weather_id" />
 					<h4>{{ currentWeather.weather_main }}</h4>
 				</div>
 
@@ -61,17 +61,24 @@
 			</div>
 		</div>
 		<div class="col-12">
-			<h2 class="siedebar-title-state">hourly Weather temp</h2>
+			<h2 class="siedebar-title-state">{{ title2 }}</h2>
 			<div class="hourly mt-2">
 				<div
 					v-for="(item , index ) in getHourlyWeather.slice(0,6)"
 					:key="`hourly-${index}`"
 					class="item"
 				>
-					<span>{{ item.main.temp }}°C</span>
-					<ProgressBar :key="$uuid.v1()" :tday="item.main.temp" :styleclass="progressclassvertical" />
+					<span class="temp">{{ item.main.temp }}°C</span>
+					<ProgressBar
+						:key="`progrss-sidebar-${index}`"
+						:tday="item.main.temp"
+						:styleclass="progressclassvertical"
+					/>
 
-					<span>{{ timeOfDay(item.dt)}} {{ item.dt_txt.slice(5, 7) }}.{{ item.dt_txt.slice(8, 10) }}</span>
+					<span class="d-flex flex-column time">
+						<span>{{ timeOfDay(item.dt)}}</span>
+						<span>{{ item.dt_txt.slice(5, 7) }}.{{ item.dt_txt.slice(8, 10) }}</span>
+					</span>
 				</div>
 			</div>
 		</div>
@@ -96,7 +103,8 @@ export default {
 	},
 	data() {
 		return {
-			progressclassvertical: 'progress-bar-vertical'
+			progressclassvertical: 'progress-bar-vertical',
+			title2: 'Hourly Weather'
 		};
 	},
 	computed: {

@@ -27,6 +27,8 @@
 		& .icon {
 			font-size: 3rem;
 			@extend %font-color;
+			line-height: 3rem;
+			margin-bottom: 0.5rem;
 		}
 
 		& h3,
@@ -129,7 +131,13 @@
 		align-items: center;
 	}
 
-	& span {
+	& .temp {
+		margin-bottom: 1rem;
+		text-align: center;
+		@extend %font-color;
+	}
+
+	& .time {
 		margin-top: 1rem;
 		text-align: center;
 		@extend %font-color;

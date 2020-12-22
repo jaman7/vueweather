@@ -42,13 +42,11 @@
 </template>
 
 <script>
-// import Dropdown from './view/dropdown';
 import ButtonSethide from './view/ButtonSethide';
 
 export default {
 	name: 'Header',
 	components: {
-		// Dropdown,
 		ButtonSethide
 	},
 	computed: {

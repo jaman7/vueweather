@@ -6,7 +6,7 @@
 export default {
 	name: 'Checked',
 	props: {
-		cityid: Number
+		cityid: String
 	},
 	data() {
 		return {

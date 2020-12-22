@@ -6,17 +6,21 @@
 				<FindCity />
 				<Citylist />
 
-				<Daily />
-
 				<!-- <div v-if="isLoading" class="col-12 container-react-logo" role="presentation">
 					<span class="react-logo" role="presentation">
 						<span class="nucleo" role="presentation" />
 					</span>
-				</div>
+				</div>-->
 
-				<p v-if="!isLoading">{{ currentWeather }}</p>-->
+				<Daily />
 			</div>
 			<div class="col-12 col-md-3 col-xl-4 order-1 order-md-2 bg-sidebar">
+				<!-- <div v-if="isLoading" class="col-12 container-react-logo" role="presentation">
+					<span class="react-logo" role="presentation">
+						<span class="nucleo" role="presentation" />
+					</span>
+				</div>-->
+
 				<SideBar />
 			</div>
 		</div>
