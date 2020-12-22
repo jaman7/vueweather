@@ -1,4 +1,3 @@
-
 <template>
 	<div class="container-fluid main-wrapper">
 		<div class="row flex-xl-nowrap">
@@ -6,7 +5,7 @@
 				<FindCity />
 				<Citylist />
 				<Daily />
-				<Footer />
+				<Chart />
 			</div>
 			<div class="col-12 col-md-3 col-xl-4 order-1 order-md-2 bg-sidebar">
 				<SideBar />
@@ -19,8 +18,9 @@
 import FindCity from './findCity';
 import Citylist from './Citylist';
 import Daily from './Daily';
-import Footer from './Footer';
+
 import SideBar from './sideBar';
+import Chart from './Chart';
 
 export default {
 	name: 'Dashboard',
@@ -28,16 +28,8 @@ export default {
 		FindCity,
 		Citylist,
 		Daily,
-		Footer,
+		Chart,
 		SideBar
-	},
-	computed: {
-		currentWeather() {
-			return this.$store.getters.getCurrentWeather;
-		},
-		isLoading() {
-			return this.$store.getters.ifisLoading;
-		}
 	}
 };
 </script>

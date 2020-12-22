@@ -23,8 +23,8 @@ export function deriveWindDir(windDir) {
 		{ minVal: 346, maxVal: 360, direction: 'NNW' }
 	];
 	let windDirection = '';
-	// eslint-disable-next-line no-plusplus
-	for (let i = 0; i < windDirectionArray.length; i++) {
+
+	for (let i = 0; i < windDirectionArray.length; i += 1) {
 		if (windDir >= windDirectionArray[i].minVal && windDir <= windDirectionArray[i].maxVal) {
 			windDirection = windDirectionArray[i].direction;
 		}

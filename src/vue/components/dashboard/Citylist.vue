@@ -1,10 +1,15 @@
 <template>
 	<div class="row">
 		<div class="col-12">
-			<h2>
-				Weather
-				<span>Forecast</span>
-			</h2>
+			<div class="d-flex justify-content-between">
+				<h2>
+					Weather
+					<span>Forecast</span>
+				</h2>
+
+				<BtnRefresh />
+			</div>
+
 			<div class="city mt-5">
 				<ul class="city-list">
 					<li
@@ -12,25 +17,34 @@
 						:class="{ active: i === activeItem || item.active}"
 						class="item"
 						:key="`list-no-${i}`"
-						@click="searchSetCurrentCity(item, i)"
+						@click="handelSetCurrentCity(item, i)"
 					>
 						<img class="img-fluid" src="img/city.svg" :alt="item.name" />
 						<span>{{ item.name }}, {{ item.country }}</span>
 						<ButtonRemove :id="item._id" :key="`btn-no-${i}`" :cityid="item.id_city" />
 						<Checked
-							v-if="i === activeItem || item.active"
+							v-if="item.active"
+							:id="item._id"
+							:key="`check-yes-${i}`"
+							:name="'yes-'+item.id_city"
+							:className="'fas fa-check checked'"
+						/>
+						<Checked
+							v-if="!item.active"
+							:id="item._id"
 							:key="`check-no-${i}`"
-							:cityid="item.id_city"
+							:name="'no-'+item.id_city"
+							:className="'far fa-square checked'"
 						/>
 					</li>
 				</ul>
-				<!-- <p>left refresh: {{ timerclock }}</p> -->
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+import BtnRefresh from './BtnRefresh';
 import ButtonRemove from '../view/ButtonRemove';
 import Checked from '../view/checked';
 
@@ -38,7 +52,8 @@ export default {
 	name: 'Citylist',
 	components: {
 		ButtonRemove,
-		Checked
+		Checked,
+		BtnRefresh
 	},
 	data() {
 		return {
@@ -81,7 +96,9 @@ export default {
 				this.$store.dispatch('Retrieve_Weather', { name, lat, lon });
 			});
 		},
-		searchSetCurrentCity(result, i) {
+		handelSetCurrentCity(result, i) {
+			console.log(result);
+			console.log(`resultitem:${i}`);
 			const city = {
 				_id: result._id,
 				name: result.name,
@@ -91,18 +108,14 @@ export default {
 				lon: result.lon,
 				active: result.active
 			};
-
 			this.activeItem = i;
-
 			const Citylist = this.getCity;
 			const lastActiveCity = Citylist.filter((item) => item.active === true);
-
 			if (lastActiveCity.length) {
 				this.last = {
 					_id: lastActiveCity[0]._id
 				};
 			}
-
 			this.$store.dispatch('setCurrentCity', city);
 			this.$store.dispatch('Retrieve_Weather', { name: city.name, lat: city.lat, lon: city.lon });
 			const payload = { current: { _id: result._id, index: i }, last: this.last };

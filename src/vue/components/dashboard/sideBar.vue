@@ -85,8 +85,6 @@
 	</div>
 </template>
 
-
-
 <script>
 import Dropdown from './dropdown';
 import IconWeater from '../view/IconWeater';

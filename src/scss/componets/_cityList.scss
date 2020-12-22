@@ -1,9 +1,9 @@
 $remove-icon-task-color: #bbb !default;
 $remove-icon-color-hover: #a52a2a !default;
 $checked-icon-color: #55ca38 !default;
-
 $border-color: #9a9fb2 !default;
 $bg-active: lighten($font-color, 80%) !default;
+
 .city-list {
 	list-style: none;
 	display: flex;
@@ -43,9 +43,8 @@ $bg-active: lighten($font-color, 80%) !default;
 
 		& .checked {
 			position: absolute;
-			top: 50%;
-			transform: translateY(-50%);
-			right: 0.5rem;
+			bottom: -1rem;
+			right: -1rem;
 			cursor: pointer;
 			color: $checked-icon-color;
 		}

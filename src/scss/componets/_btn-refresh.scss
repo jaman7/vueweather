@@ -1,0 +1,29 @@
+.refresh {
+	color: $font-color;
+	display: flex;
+	align-items: center;
+	transition: color 0.3s ease-in-out;
+
+	&:hover {
+		color: lighten($font-color, 30%);
+		transform: scale(1.015);
+	}
+
+	&__content {
+		display: flex;
+		align-items: center;
+	}
+
+	& .timer {
+		margin-right: 0.5rem;
+		font-weight: 500;
+	}
+
+	& .text {
+		margin-right: 0.5rem;
+	}
+
+	& .time {
+		font-weight: 500;
+	}
+}

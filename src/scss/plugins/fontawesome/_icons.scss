@@ -313,9 +313,9 @@
 // .#{$fa-css-prefix}-behance:before {
 // 	content: fa-content($fa-var-behance);
 // }
-// .#{$fa-css-prefix}-behance-square:before {
-// 	content: fa-content($fa-var-behance-square);
-// }
+.#{$fa-css-prefix}-behance-square:before {
+	content: fa-content($fa-var-behance-square);
+}
 // .#{$fa-css-prefix}-bell:before {
 // 	content: fa-content($fa-var-bell);
 // }
@@ -3361,9 +3361,9 @@
 // .#{$fa-css-prefix}-spray-can:before {
 // 	content: fa-content($fa-var-spray-can);
 // }
-// .#{$fa-css-prefix}-square:before {
-// 	content: fa-content($fa-var-square);
-// }
+.#{$fa-css-prefix}-square:before {
+	content: fa-content($fa-var-square);
+}
 // .#{$fa-css-prefix}-square-full:before {
 // 	content: fa-content($fa-var-square-full);
 // }

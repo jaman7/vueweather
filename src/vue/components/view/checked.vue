@@ -1,16 +1,18 @@
 <template>
-	<i role="presentation" :aria-label="title" :title="title" class="fas fa-check checked" />
+	<i role="presentation" :aria-label="titlename" :title="titlename" :class="classname" />
 </template>
 
 <script>
 export default {
 	name: 'Checked',
 	props: {
-		cityid: String
+		name: String,
+		className: String
 	},
 	data() {
 		return {
-			title: `checked:${this.cityid}`
+			classname: this.className,
+			titlename: `checked:${this.name}`
 		};
 	}
 };
