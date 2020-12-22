@@ -13,13 +13,11 @@
 
 					<div class="item-active collapse show">
 						<CollapseTransition>
-							<div
+							<DailyCollapse
 								v-show="activeItemId === itemIndex  && isActive"
-								class="bg-white"
-								:key="`daily-item-${itemIndex}`"
-							>
-								<DailyCollapse :item="item" :key="`collapse-${itemIndex}`" />
-							</div>
+								:item="item"
+								:key="`collapse-${itemIndex}`"
+							/>
 						</CollapseTransition>
 					</div>
 				</div>

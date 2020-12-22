@@ -4,9 +4,7 @@ const outputDir = path.resolve(__dirname, './src/js/');
 const srcPath = path.join(__dirname, './src/vue/');
 const TerserPlugin = require('terser-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-
-// const JsonMinimizerPlugin = require('json-minimizer-webpack-plugin');
-// const CopyWebpackPlugin = require('copy-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 const pkg = require('./package.json');
 
@@ -30,7 +28,7 @@ module.exports = {
 		libraryTarget: 'umd',
 		umdNamedDefine: true
 	},
-	plugins: [new VueLoaderPlugin()],
+	plugins: [new VueLoaderPlugin(), new Dotenv()],
 	module: {
 		rules: [
 			{

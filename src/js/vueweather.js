@@ -3111,8 +3111,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 
@@ -3350,19 +3348,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -3512,7 +3497,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var MAPBOX_URL = 'https://api.mapbox.com/geocoding/v5/mapbox.places/';
-var MAPBOX_SET = '.json?limit=5&language=pl-PL&access_token=pk.eyJ1IjoiamFtYW43IiwiYSI6ImNqbmV0bTFrczBrZG8zcm80Y2h4ZGF1ajQifQ.8aCc8P2-eq4hqman9k0E7g';
+var MAPBOX_SET = ".json?limit=5&language=pl-PL&access_token=".concat("pk.eyJ1IjoiamFtYW43IiwiYSI6ImNqbmV0bTFrczBrZG8zcm80Y2h4ZGF1ajQifQ.8aCc8P2-eq4hqman9k0E7g");
 vue__WEBPACK_IMPORTED_MODULE_1__.default.use(_trevoreyre_autocomplete_vue__WEBPACK_IMPORTED_MODULE_0__.default);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'FindCity',
@@ -3981,7 +3966,7 @@ var restdbInstance = axios__WEBPACK_IMPORTED_MODULE_0___default().create({
   baseURL: "https://".concat(URL_DB_PATCH, ".restdb.io/rest/"),
   responseType: 'json',
   headers: {
-    'x-apikey': '5fcd578789b564693884427b'
+    'x-apikey': "5fcd578789b564693884427b"
   }
 });
 /* harmony default export */ __webpack_exports__["default"] = (restdbInstance);
@@ -4112,6 +4097,19 @@ function deriveWindDir(windDir) {
 
   return windDirection;
 }
+
+/***/ }),
+
+/***/ "./src/vue/helpers/months.js":
+/*!***********************************!*\
+  !*** ./src/vue/helpers/months.js ***!
+  \***********************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+/* harmony default export */ __webpack_exports__["default"] = (MONTHS);
 
 /***/ }),
 
@@ -4250,15 +4248,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ "./node_modules/@babel/runtime/helpers/asyncToGenerator.js");
 /* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.common.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(vuex__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.common.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(vuex__WEBPACK_IMPORTED_MODULE_11__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var hash_it__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! hash-it */ "./node_modules/hash-it/es/index.js");
 /* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./router */ "./src/vue/router.js");
 /* harmony import */ var _api_resetdbAPI__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./api/resetdbAPI */ "./src/vue/api/resetdbAPI.js");
 /* harmony import */ var _api_weatherAPI__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./api/weatherAPI */ "./src/vue/api/weatherAPI.js");
+/* harmony import */ var _helpers_days__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./helpers/days */ "./src/vue/helpers/days.js");
+/* harmony import */ var _helpers_months__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./helpers/months */ "./src/vue/helpers/months.js");
 
 
 
@@ -4278,15 +4278,15 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
+
+
  // weather sets api
 
-var WEATHER_APIKEY = 'ae98d58d517252f2065829367d320dbb';
+var WEATHER_APIKEY = "ae98d58d517252f2065829367d320dbb";
 var urloptions = "&APPID=".concat(WEATHER_APIKEY, "&units=metric");
-vue__WEBPACK_IMPORTED_MODULE_8__.default.use((vuex__WEBPACK_IMPORTED_MODULE_9___default()));
-/* harmony default export */ __webpack_exports__["default"] = (new (vuex__WEBPACK_IMPORTED_MODULE_9___default().Store)({
+vue__WEBPACK_IMPORTED_MODULE_10__.default.use((vuex__WEBPACK_IMPORTED_MODULE_11___default()));
+/* harmony default export */ __webpack_exports__["default"] = (new (vuex__WEBPACK_IMPORTED_MODULE_11___default().Store)({
   state: {
-    months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-    days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
     isLoading: true,
     idToken: null,
     userId: null,
@@ -4337,8 +4337,6 @@ vue__WEBPACK_IMPORTED_MODULE_8__.default.use((vuex__WEBPACK_IMPORTED_MODULE_9___
     changeActiveCity: function changeActiveCity(state, city) {
       var last = city.last,
           current = city.current;
-      console.log("last:".concat(last._id));
-      console.log("current:".concat(current._id));
 
       if (last._id !== '') {
         var index = state.city.findIndex(function (item) {
@@ -4367,41 +4365,23 @@ vue__WEBPACK_IMPORTED_MODULE_8__.default.use((vuex__WEBPACK_IMPORTED_MODULE_9___
       var commit = _ref.commit;
       commit('citysIsLoad', !load);
     },
-    search: function search(_ref2, query) {
-      return _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee() {
-        var commit;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                commit = _ref2.commit;
-                console.log('hgjh');
-
-              case 2:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
-    },
-    logout: function logout(_ref3, authData) {
-      var commit = _ref3.commit;
+    logout: function logout(_ref2, authData) {
+      var commit = _ref2.commit;
       commit('clearAuth');
       localStorage.removeItem('idToken');
       localStorage.removeItem('userId');
       localStorage.removeItem('user');
       _router__WEBPACK_IMPORTED_MODULE_5__.default.replace('/');
     },
-    signup: function signup(_ref4, authData) {
-      return _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee2() {
+    signup: function signup(_ref3, authData) {
+      return _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee() {
         var commit;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee2$(_context2) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee$(_context) {
           while (1) {
-            switch (_context2.prev = _context2.next) {
+            switch (_context.prev = _context.next) {
               case 0:
-                commit = _ref4.commit;
-                _context2.next = 3;
+                commit = _ref3.commit;
+                _context.next = 3;
                 return _api_resetdbAPI__WEBPACK_IMPORTED_MODULE_6__.default.post('usersdb', {
                   email: authData.email,
                   pass: authData.password,
@@ -4425,22 +4405,22 @@ vue__WEBPACK_IMPORTED_MODULE_8__.default.use((vuex__WEBPACK_IMPORTED_MODULE_9___
 
               case 3:
               case "end":
-                return _context2.stop();
+                return _context.stop();
             }
           }
-        }, _callee2);
+        }, _callee);
       }))();
     },
-    login: function login(_ref5, authData) {
-      return _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee3() {
+    login: function login(_ref4, authData) {
+      return _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee2() {
         var commit;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee3$(_context3) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee2$(_context2) {
           while (1) {
-            switch (_context3.prev = _context3.next) {
+            switch (_context2.prev = _context2.next) {
               case 0:
-                commit = _ref5.commit;
+                commit = _ref4.commit;
                 commit('loading', true);
-                _context3.next = 4;
+                _context2.next = 4;
                 return _api_resetdbAPI__WEBPACK_IMPORTED_MODULE_6__.default.get("usersdb?q={\"email\":\"".concat(authData.email, "\",\"pass\":\"").concat(authData.password, "\"}")).then(function (res) {
                   if (typeof res.data !== 'undefined' && res.data.length > 0 && authData.email === res.data[0].email && authData.password === res.data[0].pass && (0,hash_it__WEBPACK_IMPORTED_MODULE_4__.default)(authData.email + authData.password) === res.data[0].idToken) {
                     localStorage.setItem('idToken', res.data[0].idToken);
@@ -4476,34 +4456,34 @@ vue__WEBPACK_IMPORTED_MODULE_8__.default.use((vuex__WEBPACK_IMPORTED_MODULE_9___
 
               case 4:
               case "end":
-                return _context3.stop();
+                return _context2.stop();
             }
           }
-        }, _callee3);
+        }, _callee2);
       }))();
     },
-    AutoLogin: function AutoLogin(_ref6) {
-      return _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee4() {
+    AutoLogin: function AutoLogin(_ref5) {
+      return _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee3() {
         var commit, idToken, userId, user;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee4$(_context4) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee3$(_context3) {
           while (1) {
-            switch (_context4.prev = _context4.next) {
+            switch (_context3.prev = _context3.next) {
               case 0:
-                commit = _ref6.commit;
+                commit = _ref5.commit;
                 commit('loading', true);
                 idToken = localStorage.getItem('idToken');
 
                 if (idToken) {
-                  _context4.next = 5;
+                  _context3.next = 5;
                   break;
                 }
 
-                return _context4.abrupt("return");
+                return _context3.abrupt("return");
 
               case 5:
                 userId = localStorage.getItem('userId');
                 user = localStorage.getItem('user');
-                _context4.next = 9;
+                _context3.next = 9;
                 return axios__WEBPACK_IMPORTED_MODULE_3___default().all([_api_resetdbAPI__WEBPACK_IMPORTED_MODULE_6__.default.get("usersdb?q={\"idToken\":".concat(idToken, "}")), _api_resetdbAPI__WEBPACK_IMPORTED_MODULE_6__.default.get("usersdb/".concat(userId, "/city"))]).then(axios__WEBPACK_IMPORTED_MODULE_3___default().spread(function (res1, res2) {
                   if (parseInt(idToken, 10) === res1.data[0].idToken) {
                     commit('authUser', {
@@ -4532,22 +4512,22 @@ vue__WEBPACK_IMPORTED_MODULE_8__.default.use((vuex__WEBPACK_IMPORTED_MODULE_9___
 
               case 9:
               case "end":
-                return _context4.stop();
+                return _context3.stop();
             }
           }
-        }, _callee4);
+        }, _callee3);
       }))();
     },
-    setAddCity: function setAddCity(_ref7, cityData) {
+    setAddCity: function setAddCity(_ref6, cityData) {
       var _this = this;
 
-      return _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee5() {
+      return _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee4() {
         var commit, city;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee5$(_context5) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee4$(_context4) {
           while (1) {
-            switch (_context5.prev = _context5.next) {
+            switch (_context4.prev = _context4.next) {
               case 0:
-                commit = _ref7.commit;
+                commit = _ref6.commit;
                 city = {
                   user_id: _this.state.userId,
                   name: cityData.name,
@@ -4557,8 +4537,7 @@ vue__WEBPACK_IMPORTED_MODULE_8__.default.use((vuex__WEBPACK_IMPORTED_MODULE_9___
                   lon: cityData.lon,
                   active: false
                 };
-                console.log(city);
-                _context5.next = 5;
+                _context4.next = 4;
                 return _api_resetdbAPI__WEBPACK_IMPORTED_MODULE_6__.default.post("usersdb/".concat(_this.state.userId, "/city"), city).then(function (res) {
                   var newcity = _objectSpread(_objectSpread({}, city), {}, {
                     _id: res.data._id
@@ -4569,7 +4548,29 @@ vue__WEBPACK_IMPORTED_MODULE_8__.default.use((vuex__WEBPACK_IMPORTED_MODULE_9___
                   return console.log(error);
                 });
 
-              case 5:
+              case 4:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
+      }))();
+    },
+    delCity: function delCity(_ref7, cityid) {
+      return _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee5() {
+        var commit;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                commit = _ref7.commit;
+                commit('clearCity', cityid);
+                _context5.next = 4;
+                return _api_resetdbAPI__WEBPACK_IMPORTED_MODULE_6__.default.delete("cities/".concat(cityid)).catch(function (error) {
+                  return console.log(error);
+                });
+
+              case 4:
               case "end":
                 return _context5.stop();
             }
@@ -4577,30 +4578,8 @@ vue__WEBPACK_IMPORTED_MODULE_8__.default.use((vuex__WEBPACK_IMPORTED_MODULE_9___
         }, _callee5);
       }))();
     },
-    delCity: function delCity(_ref8, cityid) {
-      return _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee6() {
-        var commit;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee6$(_context6) {
-          while (1) {
-            switch (_context6.prev = _context6.next) {
-              case 0:
-                commit = _ref8.commit;
-                commit('clearCity', cityid);
-                _context6.next = 4;
-                return _api_resetdbAPI__WEBPACK_IMPORTED_MODULE_6__.default.delete("cities/".concat(cityid)).catch(function (error) {
-                  return console.log(error);
-                });
-
-              case 4:
-              case "end":
-                return _context6.stop();
-            }
-          }
-        }, _callee6);
-      }))();
-    },
-    setCurrentCity: function setCurrentCity(_ref9, current) {
-      var commit = _ref9.commit;
+    setCurrentCity: function setCurrentCity(_ref8, current) {
+      var commit = _ref8.commit;
       var city = {
         name: current.name,
         country: current.country,
@@ -4611,14 +4590,14 @@ vue__WEBPACK_IMPORTED_MODULE_8__.default.use((vuex__WEBPACK_IMPORTED_MODULE_9___
       };
       commit('addCurrentCity', city);
     },
-    setFavCityActive: function setFavCityActive(_ref10, payload) {
-      return _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee7() {
+    setFavCityActive: function setFavCityActive(_ref9, payload) {
+      return _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee6() {
         var commit, current, last;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee7$(_context7) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee6$(_context6) {
           while (1) {
-            switch (_context7.prev = _context7.next) {
+            switch (_context6.prev = _context6.next) {
               case 0:
-                commit = _ref10.commit;
+                commit = _ref9.commit;
                 current = payload.current, last = payload.last;
                 commit('changeActiveCity', {
                   last: last,
@@ -4631,57 +4610,55 @@ vue__WEBPACK_IMPORTED_MODULE_8__.default.use((vuex__WEBPACK_IMPORTED_MODULE_9___
                   });
                 }
 
-                _context7.next = 6;
+                _context6.next = 6;
                 return _api_resetdbAPI__WEBPACK_IMPORTED_MODULE_6__.default.patch("cities/".concat(current._id), {
                   active: true
                 });
 
               case 6:
               case "end":
-                return _context7.stop();
+                return _context6.stop();
             }
           }
-        }, _callee7);
+        }, _callee6);
       }))();
     },
-    Retrieve_Weather: function Retrieve_Weather(_ref11, city) {
-      var _this2 = this;
-
-      return _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee8() {
+    Retrieve_Weather: function Retrieve_Weather(_ref10, city) {
+      return _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee7() {
         var commit, name, lat, lon, weather, forecast7, forecast, weatherRequests, forecastRequests7, forecastRequests, weatherAll, currentDate, date, sunset, sunrise, WeatherData;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee8$(_context8) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee7$(_context7) {
           while (1) {
-            switch (_context8.prev = _context8.next) {
+            switch (_context7.prev = _context7.next) {
               case 0:
-                commit = _ref11.commit;
-                _context8.prev = 1;
+                commit = _ref10.commit;
+                _context7.prev = 1;
                 commit('loading', true);
                 name = city.name, lat = city.lat, lon = city.lon;
-                _context8.next = 6;
+                _context7.next = 6;
                 return _api_weatherAPI__WEBPACK_IMPORTED_MODULE_7__.default.get("weather?q=".concat(name).concat(urloptions));
 
               case 6:
-                weather = _context8.sent;
-                _context8.next = 9;
+                weather = _context7.sent;
+                _context7.next = 9;
                 return _api_weatherAPI__WEBPACK_IMPORTED_MODULE_7__.default.get("onecall?lat=".concat(lat, "&lon=").concat(lon, "&exclude=hourly,minutely&units=metric&appid=").concat(WEATHER_APIKEY));
 
               case 9:
-                forecast7 = _context8.sent;
-                _context8.next = 12;
+                forecast7 = _context7.sent;
+                _context7.next = 12;
                 return _api_weatherAPI__WEBPACK_IMPORTED_MODULE_7__.default.get("forecast?q=".concat(name).concat(urloptions));
 
               case 12:
-                forecast = _context8.sent;
+                forecast = _context7.sent;
                 weatherRequests = weather.data;
                 forecastRequests7 = forecast7.data;
                 forecastRequests = forecast.data;
-                _context8.next = 18;
+                _context7.next = 18;
                 return Promise.all([weatherRequests, forecastRequests7, forecastRequests]);
 
               case 18:
-                weatherAll = _context8.sent;
+                weatherAll = _context7.sent;
                 currentDate = new Date();
-                date = "".concat(_this2.state.days[currentDate.getDay()], " ").concat(currentDate.getDate(), ", ").concat(_this2.state.months[currentDate.getMonth()]);
+                date = "".concat(_helpers_days__WEBPACK_IMPORTED_MODULE_8__.default[currentDate.getDay()], " ").concat(currentDate.getDate(), ", ").concat(_helpers_months__WEBPACK_IMPORTED_MODULE_9__.default[currentDate.getMonth()]);
                 sunset = new Date(weatherAll[0].sys.sunset * 1000).toLocaleTimeString().slice(0, 5);
                 sunrise = new Date(weatherAll[0].sunrise * 1000).toLocaleTimeString().slice(0, 5);
                 WeatherData = {
@@ -4714,20 +4691,20 @@ vue__WEBPACK_IMPORTED_MODULE_8__.default.use((vuex__WEBPACK_IMPORTED_MODULE_9___
                 commit('addDailyWeather', weatherAll[1].daily);
                 commit('addHourlyWeather', weatherAll[2].list);
                 commit('loading', false);
-                _context8.next = 33;
+                _context7.next = 33;
                 break;
 
               case 30:
-                _context8.prev = 30;
-                _context8.t0 = _context8["catch"](1);
-                console.log(_context8.t0);
+                _context7.prev = 30;
+                _context7.t0 = _context7["catch"](1);
+                console.log(_context7.t0);
 
               case 33:
               case "end":
-                return _context8.stop();
+                return _context7.stop();
             }
           }
-        }, _callee8, null, [[1, 30]]);
+        }, _callee7, null, [[1, 30]]);
       }))();
     }
   },
@@ -4784,7 +4761,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.icon[data-v-273c242c] {\r\n\tdisplay: inline-block;\r\n\twidth: 1.5em;\r\n\theight: 1.5em;\r\n\tfill: currentColor;\r\n\tstroke: none;\r\n\tvertical-align: middle;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.icon[data-v-273c242c] {\r\n\tdisplay: inline-block;\r\n\twidth: 2em;\r\n\theight: 2em;\r\n\t/* fill: currentColor; */\r\n\tstroke: none;\r\n\tvertical-align: middle;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -11355,10 +11332,10 @@ var render = function() {
                   "div",
                   { staticClass: "item-active collapse show" },
                   [
-                    _c("CollapseTransition", [
-                      _c(
-                        "div",
-                        {
+                    _c(
+                      "CollapseTransition",
+                      [
+                        _c("DailyCollapse", {
                           directives: [
                             {
                               name: "show",
@@ -11369,18 +11346,12 @@ var render = function() {
                                 "activeItemId === itemIndex  && isActive"
                             }
                           ],
-                          key: "daily-item-" + itemIndex,
-                          staticClass: "bg-white"
-                        },
-                        [
-                          _c("DailyCollapse", {
-                            key: "collapse-" + itemIndex,
-                            attrs: { item: item }
-                          })
-                        ],
-                        1
-                      )
-                    ])
+                          key: "collapse-" + itemIndex,
+                          attrs: { item: item }
+                        })
+                      ],
+                      1
+                    )
                   ],
                   1
                 )

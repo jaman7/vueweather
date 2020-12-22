@@ -22,9 +22,9 @@ export default {
 <style scoped>
 .icon {
 	display: inline-block;
-	width: 1.5em;
-	height: 1.5em;
-	fill: currentColor;
+	width: 2em;
+	height: 2em;
+	/* fill: currentColor; */
 	stroke: none;
 	vertical-align: middle;
 }

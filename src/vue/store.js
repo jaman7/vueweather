@@ -9,16 +9,17 @@ import router from './router';
 import restdbInstance from './api/resetdbAPI';
 import weatherInstance from './api/weatherAPI';
 
+import DAYS from './helpers/days';
+import MONTHS from './helpers/months';
+
 // weather sets api
-const WEATHER_APIKEY = 'ae98d58d517252f2065829367d320dbb';
+const WEATHER_APIKEY = process.env.WEATHER_API;
 const urloptions = `&APPID=${WEATHER_APIKEY}&units=metric`;
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
 	state: {
-		months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-		days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
 		isLoading: true,
 		idToken: null,
 		userId: null,
@@ -66,8 +67,6 @@ export default new Vuex.Store({
 		},
 		changeActiveCity(state, city) {
 			const { last, current } = city;
-			console.log(`last:${last._id}`);
-			console.log(`current:${current._id}`);
 			if (last._id !== '') {
 				const index = state.city.findIndex((item) => item._id === last._id);
 				state.city[index].active = false;
@@ -89,9 +88,6 @@ export default new Vuex.Store({
 	actions: {
 		citysIsLoad({ commit }, load) {
 			commit('citysIsLoad', !load);
-		},
-		async search({ commit }, query) {
-			console.log('hgjh');
 		},
 		logout({ commit }, authData) {
 			commit('clearAuth');
@@ -222,8 +218,6 @@ export default new Vuex.Store({
 				active: false
 			};
 
-			console.log(city);
-
 			await restdbInstance
 				.post(`usersdb/${this.state.userId}/city`, city)
 				.then((res) => {
@@ -284,7 +278,7 @@ export default new Vuex.Store({
 				const weatherAll = await Promise.all([weatherRequests, forecastRequests7, forecastRequests]);
 
 				const currentDate = new Date();
-				const date = `${this.state.days[currentDate.getDay()]} ${currentDate.getDate()}, ${this.state.months[currentDate.getMonth()]}`;
+				const date = `${DAYS[currentDate.getDay()]} ${currentDate.getDate()}, ${MONTHS[currentDate.getMonth()]}`;
 				const sunset = new Date(weatherAll[0].sys.sunset * 1000).toLocaleTimeString().slice(0, 5);
 				const sunrise = new Date(weatherAll[0].sunrise * 1000).toLocaleTimeString().slice(0, 5);
 

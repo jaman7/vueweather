@@ -50,8 +50,7 @@ import Vue from 'vue';
 import Autocomplete from '@trevoreyre/autocomplete-vue';
 
 const MAPBOX_URL = 'https://api.mapbox.com/geocoding/v5/mapbox.places/';
-const MAPBOX_SET =
-	'.json?limit=5&language=pl-PL&access_token=pk.eyJ1IjoiamFtYW43IiwiYSI6ImNqbmV0bTFrczBrZG8zcm80Y2h4ZGF1ajQifQ.8aCc8P2-eq4hqman9k0E7g';
+const MAPBOX_SET = `.json?limit=5&language=pl-PL&access_token=${process.env.MAPBOX_API}`;
 
 Vue.use(Autocomplete);
 export default {
