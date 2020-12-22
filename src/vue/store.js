@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-bitwise */
 /* eslint-disable import/no-cycle */
 import Vue from 'vue';
 import Vuex from 'vuex';
@@ -89,7 +87,7 @@ export default new Vuex.Store({
 		citysIsLoad({ commit }, load) {
 			commit('citysIsLoad', !load);
 		},
-		logout({ commit }, authData) {
+		logout({ commit }) {
 			commit('clearAuth');
 			localStorage.removeItem('idToken');
 			localStorage.removeItem('userId');

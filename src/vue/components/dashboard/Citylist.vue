@@ -24,7 +24,7 @@
 						/>
 					</li>
 				</ul>
-				<p>left refresh: {{ timerclock }}</p>
+				<!-- <p>left refresh: {{ timerclock }}</p> -->
 			</div>
 		</div>
 	</div>
@@ -53,13 +53,8 @@ export default {
 				lat: 52.23547,
 				lon: 21.04191,
 				active: true
-			},
-			polling: null,
-			timerclock: 60
+			}
 		};
-	},
-	created() {
-		this.timer();
 	},
 	updated() {
 		if (this.citysIsLoad && this.getCity.length) {
@@ -112,19 +107,6 @@ export default {
 			this.$store.dispatch('Retrieve_Weather', { name: city.name, lat: city.lat, lon: city.lon });
 			const payload = { current: { _id: result._id, index: i }, last: this.last };
 			this.$store.dispatch('setFavCityActive', payload);
-		},
-		timer() {
-			setInterval(() => {
-				this.timerclock -= 1;
-				if (this.timerclock < 0) {
-					this.timerclock = 60;
-					this.$store.dispatch('Retrieve_Weather', {
-						name: this.getCurrentCity.name,
-						lat: this.getCurrentCity.lat,
-						lon: this.getCurrentCity.lon
-					});
-				}
-			}, 1000);
 		}
 	},
 	computed: {

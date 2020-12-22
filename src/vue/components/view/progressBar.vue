@@ -29,7 +29,6 @@ export default {
 	},
 	methods: {
 		negative(number) {
-			console.log(!Object.is(Math.abs(number), +number));
 			return !Object.is(Math.abs(number), +number);
 		},
 		toPositive(number) {

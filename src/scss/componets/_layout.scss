@@ -1,5 +1,23 @@
 .bg-content {
 	background-color: $bg-content;
+	position: relative;
+
+	& .footer {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+
+		& .refresh {
+			color: $font-color;
+		}
+
+		& .refresh,
+		& .btn-refresh__content {
+			display: flex;
+			align-items: center;
+		}
+	}
 }
 
 .bg-sidebar {

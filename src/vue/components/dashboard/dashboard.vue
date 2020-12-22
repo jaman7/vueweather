@@ -6,6 +6,7 @@
 				<FindCity />
 				<Citylist />
 				<Daily />
+				<Footer />
 			</div>
 			<div class="col-12 col-md-3 col-xl-4 order-1 order-md-2 bg-sidebar">
 				<SideBar />
@@ -17,8 +18,9 @@
 <script>
 import FindCity from './findCity';
 import Citylist from './Citylist';
-import SideBar from './sideBar';
 import Daily from './Daily';
+import Footer from './Footer';
+import SideBar from './sideBar';
 
 export default {
 	name: 'Dashboard',
@@ -26,6 +28,7 @@ export default {
 		FindCity,
 		Citylist,
 		Daily,
+		Footer,
 		SideBar
 	},
 	computed: {

@@ -2955,13 +2955,8 @@ __webpack_require__.r(__webpack_exports__);
         lat: 52.23547,
         lon: 21.04191,
         active: true
-      },
-      polling: null,
-      timerclock: 60
+      }
     };
-  },
-  created: function created() {
-    this.timer();
   },
   updated: function updated() {
     if (this.citysIsLoad && this.getCity.length) {
@@ -3037,23 +3032,6 @@ __webpack_require__.r(__webpack_exports__);
         last: this.last
       };
       this.$store.dispatch('setFavCityActive', payload);
-    },
-    timer: function timer() {
-      var _this2 = this;
-
-      setInterval(function () {
-        _this2.timerclock -= 1;
-
-        if (_this2.timerclock < 0) {
-          _this2.timerclock = 60;
-
-          _this2.$store.dispatch('Retrieve_Weather', {
-            name: _this2.getCurrentCity.name,
-            lat: _this2.getCurrentCity.lat,
-            lon: _this2.getCurrentCity.lon
-          });
-        }
-      }, 1000);
     }
   },
   computed: {
@@ -3320,6 +3298,78 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/index.js??vue-loader-options!./src/vue/components/dashboard/Footer.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/index.js??vue-loader-options!./src/vue/components/dashboard/Footer.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'Footer',
+  data: function data() {
+    return {
+      timerclock: 60
+    };
+  },
+  created: function created() {
+    this.timer();
+  },
+  methods: {
+    fetchWeather: function fetchWeather() {
+      this.$store.dispatch('Retrieve_Weather', {
+        name: this.getCurrentCity.name,
+        lat: this.getCurrentCity.lat,
+        lon: this.getCurrentCity.lon
+      });
+      this.timerclock = 60;
+    },
+    timestamp: function timestamp(time) {
+      var currenttime = new Date(time * 1000).toLocaleTimeString().slice(0, 5);
+      return currenttime;
+    },
+    timer: function timer() {
+      var _this = this;
+
+      setInterval(function () {
+        _this.timerclock -= 1;
+
+        if (_this.timerclock < 0) {
+          _this.timerclock = 60;
+
+          _this.$store.dispatch('Retrieve_Weather', {
+            name: _this.getCurrentCity.name,
+            lat: _this.getCurrentCity.lat,
+            lon: _this.getCurrentCity.lon
+          });
+        }
+      }, 1000);
+    }
+  },
+  computed: {
+    getCurrentCity: function getCurrentCity() {
+      return this.$store.getters.currentcitydata;
+    },
+    currentWeather: function currentWeather() {
+      return this.$store.getters.getCurrentWeather;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/index.js??vue-loader-options!./src/vue/components/dashboard/dashboard.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/index.js??vue-loader-options!./src/vue/components/dashboard/dashboard.vue?vue&type=script&lang=js& ***!
@@ -3330,8 +3380,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _findCity__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./findCity */ "./src/vue/components/dashboard/findCity.vue");
 /* harmony import */ var _Citylist__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Citylist */ "./src/vue/components/dashboard/Citylist.vue");
-/* harmony import */ var _sideBar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sideBar */ "./src/vue/components/dashboard/sideBar.vue");
-/* harmony import */ var _Daily__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Daily */ "./src/vue/components/dashboard/Daily.vue");
+/* harmony import */ var _Daily__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Daily */ "./src/vue/components/dashboard/Daily.vue");
+/* harmony import */ var _Footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Footer */ "./src/vue/components/dashboard/Footer.vue");
+/* harmony import */ var _sideBar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./sideBar */ "./src/vue/components/dashboard/sideBar.vue");
 //
 //
 //
@@ -3348,6 +3399,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 
 
 
@@ -3357,8 +3410,9 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     FindCity: _findCity__WEBPACK_IMPORTED_MODULE_0__.default,
     Citylist: _Citylist__WEBPACK_IMPORTED_MODULE_1__.default,
-    Daily: _Daily__WEBPACK_IMPORTED_MODULE_3__.default,
-    SideBar: _sideBar__WEBPACK_IMPORTED_MODULE_2__.default
+    Daily: _Daily__WEBPACK_IMPORTED_MODULE_2__.default,
+    Footer: _Footer__WEBPACK_IMPORTED_MODULE_3__.default,
+    SideBar: _sideBar__WEBPACK_IMPORTED_MODULE_4__.default
   },
   computed: {
     currentWeather: function currentWeather() {
@@ -3939,7 +3993,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     negative: function negative(number) {
-      console.log(!Object.is(Math.abs(number), +number));
       return !Object.is(Math.abs(number), +number);
     },
     toPositive: function toPositive(number) {
@@ -4267,10 +4320,6 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
-/* eslint-disable no-unused-vars */
-
-/* eslint-disable no-bitwise */
-
 /* eslint-disable import/no-cycle */
 
 
@@ -4365,7 +4414,7 @@ vue__WEBPACK_IMPORTED_MODULE_10__.default.use((vuex__WEBPACK_IMPORTED_MODULE_11_
       var commit = _ref.commit;
       commit('citysIsLoad', !load);
     },
-    logout: function logout(_ref2, authData) {
+    logout: function logout(_ref2) {
       var commit = _ref2.commit;
       commit('clearAuth');
       localStorage.removeItem('idToken');
@@ -9748,6 +9797,42 @@ component.options.__file = "src/vue/components/dashboard/DailyItems.vue"
 
 /***/ }),
 
+/***/ "./src/vue/components/dashboard/Footer.vue":
+/*!*************************************************!*\
+  !*** ./src/vue/components/dashboard/Footer.vue ***!
+  \*************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Footer_vue_vue_type_template_id_1f04269d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Footer.vue?vue&type=template&id=1f04269d& */ "./src/vue/components/dashboard/Footer.vue?vue&type=template&id=1f04269d&");
+/* harmony import */ var _Footer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Footer.vue?vue&type=script&lang=js& */ "./src/vue/components/dashboard/Footer.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _Footer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _Footer_vue_vue_type_template_id_1f04269d___WEBPACK_IMPORTED_MODULE_0__.render,
+  _Footer_vue_vue_type_template_id_1f04269d___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "src/vue/components/dashboard/Footer.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
 /***/ "./src/vue/components/dashboard/dashboard.vue":
 /*!****************************************************!*\
   !*** ./src/vue/components/dashboard/dashboard.vue ***!
@@ -10271,6 +10356,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/vue/components/dashboard/Footer.vue?vue&type=script&lang=js&":
+/*!**************************************************************************!*\
+  !*** ./src/vue/components/dashboard/Footer.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Footer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Footer.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/index.js??vue-loader-options!./src/vue/components/dashboard/Footer.vue?vue&type=script&lang=js&");
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Footer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
 /***/ "./src/vue/components/dashboard/dashboard.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************!*\
   !*** ./src/vue/components/dashboard/dashboard.vue?vue&type=script&lang=js& ***!
@@ -10542,6 +10640,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": function() { return /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DailyItems_vue_vue_type_template_id_b19671ae___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns; }
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DailyItems_vue_vue_type_template_id_b19671ae___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./DailyItems.vue?vue&type=template&id=b19671ae& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./src/vue/components/dashboard/DailyItems.vue?vue&type=template&id=b19671ae&");
+
+
+/***/ }),
+
+/***/ "./src/vue/components/dashboard/Footer.vue?vue&type=template&id=1f04269d&":
+/*!********************************************************************************!*\
+  !*** ./src/vue/components/dashboard/Footer.vue?vue&type=template&id=1f04269d& ***!
+  \********************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": function() { return /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Footer_vue_vue_type_template_id_1f04269d___WEBPACK_IMPORTED_MODULE_0__.render; },
+/* harmony export */   "staticRenderFns": function() { return /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Footer_vue_vue_type_template_id_1f04269d___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns; }
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Footer_vue_vue_type_template_id_1f04269d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Footer.vue?vue&type=template&id=1f04269d& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./src/vue/components/dashboard/Footer.vue?vue&type=template&id=1f04269d&");
 
 
 /***/ }),
@@ -11261,9 +11376,7 @@ var render = function() {
             )
           }),
           0
-        ),
-        _vm._v(" "),
-        _c("p", [_vm._v("left refresh: " + _vm._s(_vm.timerclock))])
+        )
       ])
     ])
   ])
@@ -11505,6 +11618,58 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./src/vue/components/dashboard/Footer.vue?vue&type=template&id=1f04269d&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./src/vue/components/dashboard/Footer.vue?vue&type=template&id=1f04269d& ***!
+  \***********************************************************************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": function() { return /* binding */ render; },
+/* harmony export */   "staticRenderFns": function() { return /* binding */ staticRenderFns; }
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "footer" }, [
+    _c(
+      "button",
+      {
+        staticClass: "btn refresh",
+        attrs: { title: "Refresh" },
+        on: { click: _vm.fetchWeather }
+      },
+      [
+        _vm.currentWeather
+          ? _c("div", { staticClass: "btn-refresh__content" }, [
+              _c("img", {
+                staticClass: "img-fluid icon-refresh",
+                attrs: { src: "img/refresh.svg", alt: "refresh" }
+              }),
+              _vm._v(" "),
+              _c("span", [
+                _vm._v(
+                  _vm._s(_vm.timerclock) +
+                    " Last updated: " +
+                    _vm._s(_vm.timestamp(_vm.currentWeather.dt))
+                )
+              ])
+            ])
+          : _vm._e()
+      ]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./src/vue/components/dashboard/dashboard.vue?vue&type=template&id=59617f22&":
 /*!**************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./src/vue/components/dashboard/dashboard.vue?vue&type=template&id=59617f22& ***!
@@ -11528,7 +11693,15 @@ var render = function() {
         {
           staticClass: "col-12 col-md-9 col-xl-8 order-2 order-md-1 bg-content"
         },
-        [_c("FindCity"), _vm._v(" "), _c("Citylist"), _vm._v(" "), _c("Daily")],
+        [
+          _c("FindCity"),
+          _vm._v(" "),
+          _c("Citylist"),
+          _vm._v(" "),
+          _c("Daily"),
+          _vm._v(" "),
+          _c("Footer")
+        ],
         1
       ),
       _vm._v(" "),
