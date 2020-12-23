@@ -9,7 +9,7 @@
 			aria-haspopup="true"
 			aria-expanded="false"
 		>
-			<span>{{ selectedItem }}</span>
+			<span>{{ getNameCountry }}</span>
 		</a>
 		<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 			<a
@@ -24,8 +24,6 @@
 </template>
 
 <script>
-// import ButtonRemove from './ButtonRemove';
-
 export default {
 	name: 'Dropdown',
 	data() {
@@ -33,6 +31,7 @@ export default {
 			selectedItem: 'Places'
 		};
 	},
+
 	methods: {
 		selected(element) {
 			const city = {
@@ -44,6 +43,7 @@ export default {
 			};
 			this.selectedItem = `${element.name}, ${element.country}`;
 			this.$store.dispatch('setCurrentCity', city);
+			this.$store.dispatch('Retrieve_Weather', { name: city.name, lat: city.lat, lon: city.lon });
 		}
 	},
 	computed: {
@@ -52,6 +52,22 @@ export default {
 		},
 		getCity() {
 			return this.$store.getters.citydata;
+		},
+		getCurrentCity() {
+			return this.$store.getters.currentcitydata;
+		},
+		citysIsLoad() {
+			return this.$store.getters.citysIsLoad;
+		},
+		getNameCountry() {
+			const allCity = this.getCity;
+			const currentCity = this.getCurrentCity;
+			const comparedCity = allCity.filter((item) => item.id_city === currentCity.id_city);
+
+			if (comparedCity.length > 0) {
+				return `${comparedCity[0].name}, ${comparedCity[0].country}`;
+			}
+			return this.selectedItem;
 		}
 	}
 };

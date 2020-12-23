@@ -15,30 +15,6 @@
 				<div class="flex-fill item">
 					<button class="btn btn-link" @click="addFavorites">Add city to favorites</button>
 				</div>
-
-				<div class="flex-fill item">
-					<div class="dropdown">
-						<a
-							href="#"
-							role="button"
-							id="dropdownMenuLink"
-							data-toggle="dropdown"
-							aria-haspopup="true"
-							aria-expanded="false"
-							class="btn btn-secondary dropdown-toggle"
-						>
-							<span>All Places</span>
-						</a>
-						<div aria-labelledby="dropdownMenuLink" class="dropdown-menu">
-							<a
-								v-for="(item, index) in getCity"
-								:key="index"
-								href="#"
-								class="dropdown-item"
-							>{{ item.name }}, {{ item.country }}</a>
-						</div>
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>

@@ -3094,6 +3094,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       activeItem: null,
+      currentItem: null,
       last: {
         _id: ''
       },
@@ -3146,8 +3147,6 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     handelSetCurrentCity: function handelSetCurrentCity(result, i) {
-      console.log(result);
-      console.log("resultitem:".concat(i));
       var city = {
         _id: result._id,
         name: result.name,
@@ -3529,7 +3528,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-// import ButtonRemove from './ButtonRemove';
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Dropdown',
   data: function data() {
@@ -3548,6 +3546,11 @@ __webpack_require__.r(__webpack_exports__);
       };
       this.selectedItem = "".concat(element.name, ", ").concat(element.country);
       this.$store.dispatch('setCurrentCity', city);
+      this.$store.dispatch('Retrieve_Weather', {
+        name: city.name,
+        lat: city.lat,
+        lon: city.lon
+      });
     }
   },
   computed: {
@@ -3556,6 +3559,25 @@ __webpack_require__.r(__webpack_exports__);
     },
     getCity: function getCity() {
       return this.$store.getters.citydata;
+    },
+    getCurrentCity: function getCurrentCity() {
+      return this.$store.getters.currentcitydata;
+    },
+    citysIsLoad: function citysIsLoad() {
+      return this.$store.getters.citysIsLoad;
+    },
+    getNameCountry: function getNameCountry() {
+      var allCity = this.getCity;
+      var currentCity = this.getCurrentCity;
+      var comparedCity = allCity.filter(function (item) {
+        return item.id_city === currentCity.id_city;
+      });
+
+      if (comparedCity.length > 0) {
+        return "".concat(comparedCity[0].name, ", ").concat(comparedCity[0].country);
+      }
+
+      return this.selectedItem;
     }
   }
 });
@@ -3572,30 +3594,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
 /* harmony import */ var _trevoreyre_autocomplete_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @trevoreyre/autocomplete-vue */ "./node_modules/@trevoreyre/autocomplete-vue/dist/autocomplete.esm.js");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -53660,7 +53658,7 @@ var render = function() {
               {
                 key: "list-no-" + i,
                 staticClass: "item",
-                class: { active: i === _vm.activeItem || item.active },
+                class: { active: item.id_city === _vm.getCurrentCity.id_city },
                 on: {
                   click: function($event) {
                     return _vm.handelSetCurrentCity(item, i)
@@ -54034,7 +54032,7 @@ var render = function() {
               "aria-expanded": "false"
             }
           },
-          [_c("span", [_vm._v(_vm._s(_vm.selectedItem))])]
+          [_c("span", [_vm._v(_vm._s(_vm.getNameCountry))])]
         ),
         _vm._v(" "),
         _c(
@@ -54113,59 +54111,12 @@ var render = function() {
             { staticClass: "btn btn-link", on: { click: _vm.addFavorites } },
             [_vm._v("Add city to favorites")]
           )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex-fill item" }, [
-          _c("div", { staticClass: "dropdown" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "dropdown-menu",
-                attrs: { "aria-labelledby": "dropdownMenuLink" }
-              },
-              _vm._l(_vm.getCity, function(item, index) {
-                return _c(
-                  "a",
-                  {
-                    key: index,
-                    staticClass: "dropdown-item",
-                    attrs: { href: "#" }
-                  },
-                  [_vm._v(_vm._s(item.name) + ", " + _vm._s(item.country))]
-                )
-              }),
-              0
-            )
-          ])
         ])
       ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "btn btn-secondary dropdown-toggle",
-        attrs: {
-          href: "#",
-          role: "button",
-          id: "dropdownMenuLink",
-          "data-toggle": "dropdown",
-          "aria-haspopup": "true",
-          "aria-expanded": "false"
-        }
-      },
-      [_c("span", [_vm._v("All Places")])]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

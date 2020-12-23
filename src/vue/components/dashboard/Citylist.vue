@@ -14,7 +14,7 @@
 				<ul class="city-list">
 					<li
 						v-for="(item, i ) in getCity"
-						:class="{ active: i === activeItem || item.active}"
+						:class="{ active: item.id_city === getCurrentCity.id_city}"
 						class="item"
 						:key="`list-no-${i}`"
 						@click="handelSetCurrentCity(item, i)"
@@ -58,6 +58,7 @@ export default {
 	data() {
 		return {
 			activeItem: null,
+			currentItem: null,
 			last: {
 				_id: ''
 			},
@@ -97,8 +98,6 @@ export default {
 			});
 		},
 		handelSetCurrentCity(result, i) {
-			console.log(result);
-			console.log(`resultitem:${i}`);
 			const city = {
 				_id: result._id,
 				name: result.name,
